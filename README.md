@@ -42,15 +42,15 @@ An nice extension could be to add a UI based Dialog that would allow the data to
   - Maximum performance/complexity of Djikstras
   - popCounter was left in to see how many boxes were added the heap
   - Grid has a maximum size of 50x50 with approx 50,000 operations being run. This is a decent amount, but not too bad.
-- Input Boxes 
 - IGridGame interface
 - UI - Material UI and inline styles
   - Using sx in Material UI for the styles, this is more performant than standard "style" tags, but there are pros/cons
   to this approach compared to other styling options
 -  Grid Validation
-  - start/end are within Grid
-  - All cols/rows have same length
-  - All letters in grid equal correct label
+    - start/end are within Grid
+    - All cols/rows have same length
+    - All letters in grid equal correct label
+- Could certainly add more test cases
 
 
 ### Questions

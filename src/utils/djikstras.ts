@@ -57,6 +57,9 @@ export function runDjikstras(
   const n = gridGame.grid.length;
   const m = gridGame.grid[0].length;
 
+  // We use a priority queue, and on each iteration traverse to the next option where there is the maximum
+  // amount of health (and moves if there is a tie). If we are able to reach the end than there is a 
+  // possible path.
   const bidsQueue = new PriorityQueue<IGridBox>(compareBoxes);
 
   const cache: Record<string, number> = {};
