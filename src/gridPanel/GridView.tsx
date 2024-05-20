@@ -1,8 +1,9 @@
-import { GridGame } from "../examples/examples";
+import { useCallback } from "react";
+import { IGridGame } from "../examples/examples";
 import Box from "@mui/material/Box";
 
 interface GridViewProps {
-  gridGame: GridGame;
+  gridGame: IGridGame;
   algPath: number[][];
 }
 
@@ -15,17 +16,19 @@ export function GridView({ gridGame, algPath }: GridViewProps) {
     pathSet.add(pointToString(el));
   });
 
-  const getBackground = (i: number, j: number) => {
-    if (i === gridGame.start[0] && j === gridGame.start[1]) {
-      return "orange";
-    }
+  // Could memoize this with gridGame instance
+  const getBackground = useCallback(
+    (i: number, j: number) => {
+      if (i === gridGame.start[0] && j === gridGame.start[1]) {
+        return "orange";
+      }
 
-    if (i === gridGame.end[0] && j === gridGame.end[1]) {
-      return "lightblue";
-    }
-  };
-
-  // console.log(JSON.stringify(gridGame.grid))
+      if (i === gridGame.end[0] && j === gridGame.end[1]) {
+        return "lightblue";
+      }
+    },
+    [gridGame],
+  );
 
   return (
     <Box sx={{ minWidth: "800px" }}>

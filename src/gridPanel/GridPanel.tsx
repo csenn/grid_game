@@ -1,22 +1,23 @@
 import { useEffect, useState } from "react";
-import { GridGame } from "../examples/examples";
+import { IGridGame } from "../examples/examples";
 import { IGridBox, runDjikstras } from "../utils/djikstras";
 import { GridView } from "./GridView";
 import { Button, Box, Chip, Paper } from "@mui/material";
 
 interface GridPanelProps {
-  gridGame: GridGame;
+  gridGame: IGridGame;
 }
 
 export function GridPanel({ gridGame }: GridPanelProps) {
+  // IGridBox will hold the algorithms farthest box reached along with some meta data
   const [gridBox, setGridBox] = useState<IGridBox | null>(null);
 
   const onRunDjikstras = () => {
     const finalBox = runDjikstras(gridGame);
-
     setGridBox(finalBox);
   };
 
+  // Clear gridBox if the selectedGridGame changes
   useEffect(() => {
     setGridBox(null);
   }, [gridGame]);

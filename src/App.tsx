@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
-import { GridGame, allExamples } from './examples/examples';
+import { IGridGame, allExamples } from './examples/examples';
 import { ExamplePanel } from './examplePanel/ExamplePanel';
 import {GridPanel} from './gridPanel/GridPanel'
 import {  Box} from "@mui/material"
 
 function App() {
 
-  const [selectedExample, setSelectedExample] = useState<GridGame |null>(null)
+  // Keep things simple and keep state in app component
+  // In a larger application, React.Context or a data management library could be used
+  const [selectedExample, setSelectedExample] = useState<IGridGame |null>(null)
 
   return (
     <Box sx={{display: 'flex', height: '100vh', width: '100vw'}}>
@@ -15,8 +17,12 @@ function App() {
       </Box>
 
       <Box sx={{overflow: 'scroll', flexGrow: 1}}> 
-        {selectedExample && (
+        {selectedExample ? (
           <GridPanel gridGame={selectedExample} />
+        ): (
+          <Box sx={{padding: '50px'}}>
+            <strong>Instructions</strong>: Either generate a grid or choose a pre-built grid from the sidebar.
+          </Box>
         )}
       </Box>
     </Box>

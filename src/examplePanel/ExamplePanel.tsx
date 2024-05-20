@@ -1,16 +1,16 @@
 import { Button } from "@mui/material";
-import { DEFAULT_WIDTH, GridGame } from "../examples/examples";
+import { IGridGame } from "../examples/examples";
 import Box from "@mui/material/Box";
 import { generateRandomGrid } from "../utils/generateRandom";
 
 type ExamplePanelProps = {
-  examples: GridGame[];
-  onChooseExample: (example: GridGame) => void;
+  examples: IGridGame[];
+  onChooseExample: (example: IGridGame) => void;
 };
 
 export function ExamplePanel({ examples, onChooseExample }: ExamplePanelProps) {
   const onGenerate = (amount: number) => {
-    const gridGame: GridGame = {
+    const gridGame: IGridGame = {
       name: "Random",
       grid: generateRandomGrid(amount, amount),
       start: [0, 0],

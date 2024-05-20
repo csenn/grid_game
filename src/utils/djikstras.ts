@@ -1,4 +1,4 @@
-import { GridGame } from "../examples/examples";
+import { IGridGame } from "../examples/examples";
 import { ICompare, PriorityQueue } from "@datastructures-js/priority-queue";
 import { validateGridGame } from "./validate";
 
@@ -17,7 +17,7 @@ const directions = [
   [-1, 0],
 ];
 
-// Maybe use enums and some alternative here
+// Maybe use enums and some alternative here, but B,S,L, and M are validated in the validator function
 const BoxLookup: Record<string, Record<string, number>> = {
   B: { health: 0, moves: -1 },
   S: { health: -5, moves: 0 },
@@ -40,14 +40,18 @@ const compareBoxes: ICompare<IGridBox> = (a: IGridBox, b: IGridBox) => {
   return a.moves > b.moves ? -1 : 1;
 };
 
-export function runDjikstras(gridGame: GridGame, startHealth = 200, startMoves = 450): IGridBox | null {
-
-  const validateError = validateGridGame(gridGame)
+export function runDjikstras(
+  gridGame: IGridGame,
+  startHealth = 200,
+  startMoves = 450,
+): IGridBox | null {
+  // Will either be a string with an error message, or null if there is no error
+  const validateError = validateGridGame(gridGame);
 
   if (validateError) {
-    // Just throw an error here. Probably want to do something slightly different in production like creating a React error boundary or
+    // Just throw an error here. Probably want to add something slightly different in production like creating a React error boundary or
     // allowing this function to return an object wrapper where an error can be returned on failure
-    throw new Error('Djikstas Error: ' + validateError)
+    throw new Error("Djikstas Error: " + validateError);
   }
 
   const n = gridGame.grid.length;
@@ -57,8 +61,8 @@ export function runDjikstras(gridGame: GridGame, startHealth = 200, startMoves =
 
   const cache: Record<string, number> = {};
 
-  // Could possibly move outside this function, or create a cache
-  // class, but this is also fine.
+  // Here we track whether a grid_box has already been visited,
+  // and to stop traversing if there are less moves than another visit
   const isAlreadyVisited = (point: number[], moves: number) => {
     const key = point[0] + "_" + point[1];
 
@@ -76,7 +80,7 @@ export function runDjikstras(gridGame: GridGame, startHealth = 200, startMoves =
     return false;
   };
 
-  // Starting Position
+  // Starting Position. We assume health penalty at start block does not count
   bidsQueue.enqueue({
     health: startHealth,
     moves: startMoves,
@@ -95,10 +99,12 @@ export function runDjikstras(gridGame: GridGame, startHealth = 200, startMoves =
 
     popCounter += 1;
 
+    // Continue if health or moves is negative
     if (currentBox.health < 0 || currentBox.moves < 0) {
       continue;
     }
 
+    // Check to see if we reached end
     if (
       currentBox.point[0] === gridGame.end[0] &&
       currentBox.point[1] === gridGame.end[1]
@@ -112,13 +118,13 @@ export function runDjikstras(gridGame: GridGame, startHealth = 200, startMoves =
       continue;
     }
 
+    // Track distance from end in case we cant reach end and want to return the closest path
     const distanceFromEnd = distanceBetweenPoints(
       currentBox.point,
       gridGame.end,
     );
 
     if (distanceFromEnd < closestSoFar) {
-      // console.log(distanceFromEnd, currentBox.point[0],  currentBox.point[1])
       closestSoFar = distanceFromEnd;
       closestPointSoFar = currentBox;
     }

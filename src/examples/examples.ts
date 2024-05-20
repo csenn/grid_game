@@ -9,14 +9,22 @@ import example_six from "./exampleGrids/exampleSix.json";
 
 export const DEFAULT_WIDTH = 50;
 
-export interface GridGame {
+/** 
+  Here is the GridGame interface.
+  Each grid box has a character of "B", "L", "S", "M"
+  The start and end position are kept as separate properties,
+  although we could have also added the grid "START" and "END" 
+  as an alternative.
+  Start and End points must exist within the grid
+ */
+export interface IGridGame {
   name: string;
   grid: string[][];
   start: number[];
   end: number[];
 }
 
-export const allExamples: GridGame[] = [
+export const allExamples: IGridGame[] = [
   {
     name: "5x5 All Bs",
     grid: example_one,
