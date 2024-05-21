@@ -60,5 +60,7 @@ start/end points to be edited.
 - Is start in calculation? Code assumes the start node does not count in health/moves calculation
 - Minimize both Health and Moves, which is a multivariate minimization
   - Since there are 450 moves available and only 200 health, and since every penalty 
-    has higher health damage then move damage (except for Blank), health always runs out before moves
+    has higher health damage then move damage (except for Blank), health always runs out before moves 
+    unless there is a "Blank" path through. An example of a Blank path where moves run out can be seen
+    in example "50x50 Spiral (Does not reach Moves)"
 - Can start/end only be on edge, or anywhere in GRID
