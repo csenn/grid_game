@@ -3,9 +3,11 @@ import example_one from "./exampleGrids/exampleOne.json";
 import example_two from "./exampleGrids/exampleTwo.json";
 import example_three from "./exampleGrids/exampleThree.json";
 import example_three_a from "./exampleGrids/exampleThreeA.json";
+import example_three_b from "./exampleGrids/exampleThreeB.json";
 import example_four from "./exampleGrids/exampleFour.json";
 import example_five from "./exampleGrids/exampleFive.json";
 import example_six from "./exampleGrids/exampleSix.json";
+import example_six_a from "./exampleGrids/exampleSixA.json";
 
 export const DEFAULT_WIDTH = 50;
 
@@ -56,6 +58,12 @@ export const allExamples: IGridGame[] = [
     end: [example_three_a.length - 1, example_three_a[0].length - 1],
   },
   {
+    name: "15x15 Ls with B spiral",
+    grid: example_three_b,
+    start: [0, 0],
+    end: [example_three_a.length - 1, example_three_a[0].length - 1],
+  },
+  {
     name: "25x25 Reaches",
     grid: example_four,
     start: [0, 0],
@@ -78,5 +86,11 @@ export const allExamples: IGridGame[] = [
     grid: example_six,
     start: [10, 0],
     end: [12, example_six.length - 1],
+  },
+  {
+    name: "50x50 Spiral (Does not reach Moves)",
+    grid: example_six_a,
+    start: [0, 0],
+    end: [example_six_a.length - 1, example_six_a[0].length - 1],
   },
 ];
