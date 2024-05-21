@@ -51,6 +51,7 @@ An nice extension could be to add a UI based Dialog that would allow the data to
     - All cols/rows have same length
     - All letters in grid equal correct label
 - Could certainly add more test cases
+- Could make it so you could modify start/end position and re-run algorithm
 
 
 ### Questions

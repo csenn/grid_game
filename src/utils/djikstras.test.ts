@@ -141,3 +141,29 @@ test("Djikstras - Start = End", () => {
   expect(result.health).toEqual(200);
   expect(result.moves).toEqual(450);
 });
+
+test("Djikstras - Run out of moves with Blanks", () => {
+  const example = [
+    ["B", "B", "B", "B", "B"],
+    ["B", "B", "B", "B", "B"],
+    ["B", "B", "B", "B", "B"],
+    ["B", "B", "B", "B", "B"],
+    ["B", "B", "B", "B", "B"],
+  ];
+
+  const gridGame: IGridGame = {
+    name: "test",
+    grid: example,
+    start: [0, 0],
+    end: [example.length - 1, example[0].length - 1],
+  };
+
+  const result = runDjikstras(gridGame, 200, 5);
+
+  if (!result) {
+    throw new Error("Result is expected");
+  }
+
+  expect(result.pass).toBeFalsy();
+  expect(result.moves).toEqual(0);
+});

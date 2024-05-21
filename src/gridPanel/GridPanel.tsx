@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { IGridGame } from "../examples/examples";
-import { IGridBox, runDjikstras } from "../utils/djikstras";
+import { BoxLookup, IGridBox, runDjikstras } from "../utils/djikstras";
 import { GridView } from "./GridView";
 import { Button, Box, Chip, Paper } from "@mui/material";
 
