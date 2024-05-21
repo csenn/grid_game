@@ -17,7 +17,7 @@ The left sidebar has 2 categories of options to choose from
 
 After choosing a grid_game, click `Run Dijkstra's algorithm` to execute the path finding algorithm. It should do it's best to find a path from the start node to the end node. It will say pass if it can reach, and if it can't reach, it will
 return the farthest node it was able to get to before running out of health/moves. The path it takes will be in bold. The start node is 
-in orange, and the end node in blue.
+in orange, and the end node in blue. The start node is assumed to not count as part of the penalty calculation.
 
 
 Dijkstra's algorithm was written in TypeScript and can be found in the utils folder. 
@@ -31,10 +31,12 @@ npm run test
 
 ## Creating a test case
 There are two ways to create a new grid test case. The first would be to modify examples/examples.ts and add a json file
-following the same pattern used in that file. The other way would be to create a test case in djikstras.test.ts.
+following the same pattern used in that file. There is documentation there on how to fulfill the IGridGame interface there.
+The other way to create a test case is to use djikstras.test.ts. 
 
 
-An nice extension could be to add a UI based Dialog that would allow the data to be entered.
+A nice extension could be to add a UI based Dialog that would allow the data to be entered, or UI components allowing
+start/end points to be edited.
 
 ### Notes / Discussion Topics
 - UI Design is super light

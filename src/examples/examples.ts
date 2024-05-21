@@ -15,9 +15,10 @@ export const DEFAULT_WIDTH = 50;
   Here is the GridGame interface.
   Each grid box has a character of "B", "L", "S", "M"
   The start and end position are kept as separate properties,
-  although we could have also added the grid "START" and "END" 
-  as an alternative.
-  Start and End points must exist within the grid
+  although we could have also added something like "START" and "END" 
+  directly into the grid as an alternative.
+  Start and End points must exist within the grid, but currently
+  do not need to be on the edges
  */
 export interface IGridGame {
   name: string;
