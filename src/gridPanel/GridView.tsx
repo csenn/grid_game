@@ -46,7 +46,8 @@ export function GridView({ gridGame, algPath }: GridViewProps) {
                 border: " 0.5px solid rgb(230,230,230)",
               }}
             >
-              {col}
+              {i === gridGame.start[0] && j === gridGame.start[1] ? '@': col}
+              
             </Box>
           ))}
         </Box>
