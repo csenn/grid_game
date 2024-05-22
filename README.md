@@ -30,9 +30,9 @@ npm run test
 ```
 
 ## Creating a test case
-There are two ways to create a new grid test case. The first would be to modify examples/examples.ts and add a json file
+There are two ways to try a path finding algoritm for a new custom grid. The first would be to modify examples/examples.ts and add a json file
 following the same pattern used in that file. There is documentation there on how to fulfill the IGridGame interface there.
-The other way to create a test case is to use djikstras.test.ts. 
+The other way is to create a test case in djikstras.test.ts. 
 
 
 A nice extension could be to add a UI based Dialog that would allow the data to be entered, or UI components allowing
